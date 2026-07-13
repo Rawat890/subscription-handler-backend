@@ -1,8 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import { config } from 'dotenv';
 
-export const PORT = process.env.PORT || 4000;
-export const MONGO_URI = process.env.MONGO_URI;
-export const JWT_SECRET = process.env.JWT_SECRET;
-export const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
-export const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
+config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
+
+export const { PORT, MONGO_URL, JWT_SECRET, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET, NODE_ENV } = process.env;
