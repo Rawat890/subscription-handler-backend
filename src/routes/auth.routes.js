@@ -4,7 +4,7 @@ import errorMiddleware from "../middlewares/error.middleware.js";
 
 const authRouter = Router();
 
-authRouter.post("/register", errorMiddleware, registerUserController);
+authRouter.post("/register", registerUserController);
 authRouter.post("/login", loginUserController);
 
 export default authRouter;
