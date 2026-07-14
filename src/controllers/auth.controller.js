@@ -76,10 +76,15 @@ export const loginUserController = async (req, res, next) => {
       })
     }
 
-    if (password !== await bcrypt.compare(password, isUserExists.password)) {
+    const isPasswordMatch = await bcrypt.compare(
+      password,
+      isUserExists.password
+    );
+
+    if (!isPasswordMatch) {
       return res.status(401).json({
-        message: "Invalid credentials"
-      })
+        message: "Invalid credentials",
+      });
     }
 
     console.log(isUserExists)
