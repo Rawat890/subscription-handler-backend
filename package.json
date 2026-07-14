@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/Rawat890/subscription-handler-backend#readme",
   "dependencies": {
+    "@arcjet/inspect": "^1.8.0",
+    "@arcjet/node": "^1.8.0",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
