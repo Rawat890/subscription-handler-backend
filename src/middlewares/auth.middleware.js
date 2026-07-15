@@ -9,26 +9,24 @@ export const authorize = async (req, res, next) => {
   }
 
   if (!token) {
-   res.status(401).json({
+   return res.status(401).json({
     success: false,
     message: 'Not authorized to access this route'
    })
-   throw new Error('Not authorized to access this route');
   }
 
-  const decoded = await jwt.verify(token, JWT_SECRET);
-
-  const user = await User.findById(decoded.id);
+  const decoded = jwt.verify(token, JWT_SECRET);
+  const user = await User.findById(decoded.userId);
 
   if (!user) {
-   res.status(401).json({
+   return res.status(401).json({
     success: false,
     message: 'Not authorized to access this route'
    })
-   throw new Error('Not authorized to access this route');
   }
 
   req.user = user;
+  console.log("User - ", req.user)
   next();
  } catch (error) {
   next(error);
